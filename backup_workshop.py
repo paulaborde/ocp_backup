@@ -10,13 +10,10 @@ for line in file:
 # for each lab create repo
 for c in commands:
     print(c)
-    repo_name = "OCP_" + c.split(" ")[1]
-    github_creation = "curl -F 'login=paulaborde' -F 'token=418f9cf634f53b49417acfa9ed220cace7a771f7' https://github.com/api/v2/yaml/repos/create -F name=%s" % repo_name
-    os.system(github_creation)
-    os.system("cd DO380")
-    os.system("git add *")
-    os.system("git commit -am 'init data in repo'")
-    os.system("git remote add origin https://github.com/paulaborde/%s.git" % repo_name)
-    os.system("git push")
+    lab_name = "OCP_" + c.split(" ")[1]
+    os.system(c)
+    os.system("cd ~/DO380")
+    os.system("zip -r %s *" % lab_name)
+    os.system("mv %s ~" % lab_name)
     os.system("cd ")
     os.system(c.replace('start', 'finish'))
