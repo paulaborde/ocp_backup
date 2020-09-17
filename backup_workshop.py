@@ -5,8 +5,8 @@ commands = []
 file = open("raw.txt", "r")
 for line in file:
     if "[student@workstation ~]$ lab" in line and "start" in line:
-        commands.append(line.split('$')[1][1:])
-
+        commands.append(line.split('$')[1][1:-1])
+print(commands)
 # for each lab create repo
 for c in commands:
     print(c)
